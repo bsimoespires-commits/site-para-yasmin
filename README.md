@@ -1,316 +1,271 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Yasmin ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Yasmin ❤️</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffe4e1 0%, #ffcccb 50%, #ffb6c1 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe4e1 0%, #ffcccb 50%, #ffb6c1 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
+/* Fotos nas laterais */
+.side-images {
+    position: fixed;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 1; /* atrás do conteúdo central */
+}
 
-        h1 {
-            color: #d81b60;
-            font-size: 3.5em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: pulse 2s infinite;
-        }
+.side-images.left { left: 0; }
+.side-images.right { right: 0; }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+.side-images img {
+    width: 100px;
+    margin-bottom: 10px;
+    animation: slide 15s linear infinite;
+    border-radius: 10px;
+}
 
-        .message {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin: 30px 0;
-            line-height: 1.8;
-            font-size: 1.2em;
-            color: #333;
-            border: 3px solid #ff69b4;
-            position: relative;
-        }
+@keyframes slide {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+}
 
-        .message::before {
-            content: '"';
-            font-size: 4em;
-            color: #ff69b4;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            opacity: 0.3;
-        }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
 
-        .message p {
-            margin-bottom: 20px;
-            text-align: left;
-        }
+h1 {
+    color: #d81b60;
+    font-size: 3.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+}
 
-        .message p:last-child {
-            margin-bottom: 0;
-            text-align: center;
-            font-weight: bold;
-            color: #d81b60;
-        }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
-        button {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 40px;
-            font-size: 1.3em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-            margin: 20px 0;
-        }
+.message {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin: 30px 0;
+    line-height: 1.8;
+    font-size: 1.2em;
+    color: #333;
+    border: 3px solid #ff69b4;
+    position: relative;
+}
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-        }
+.message::before {
+    content: '"';
+    font-size: 4em;
+    color: #ff69b4;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    opacity: 0.3;
+}
 
-        #surpriseMessage {
-            margin-top: 30px;
-            font-size: 1.5em;
-            color: #d81b60;
-            font-weight: bold;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            border-left: 5px solid #ff69b4;
-            animation: fadeIn 1s ease-in;
-        }
+.message p { margin-bottom: 20px; text-align: left; }
+.message p:last-child { margin-bottom: 0; text-align: center; font-weight: bold; color: #d81b60; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+button {
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    margin: 20px 0;
+}
 
-        .hidden {
-            display: none;
-        }
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+}
 
-        /* Estilos para os corações */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            transform: rotate(45deg);
-            opacity: 0.8;
-            z-index: 1;
-            pointer-events: none;
-        }
+#surpriseMessage {
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: #d81b60;
+    font-weight: bold;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    border-left: 5px solid #ff69b4;
+    animation: fadeIn 1s ease-in;
+}
 
-        .heart::before,
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            border-radius: 50%;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
+.hidden { display: none; }
 
-        .heart::after {
-            top: 0;
-            left: -10px;
-        }
+/* Corações flutuantes */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    transform: rotate(45deg);
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
+.heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after { top: 0; left: -10px; }
 
-        @keyframes float {
-            0% {
-                transform: rotate(45deg) translateY(0) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: rotate(45deg) translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+@keyframes float {
+    0% { transform: rotate(45deg) translateY(0) rotate(0deg); opacity: 0.8; }
+    100% { transform: rotate(45deg) translateY(-100vh) rotate(360deg); opacity: 0; }
+}
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-            
-            .message {
-                padding: 30px 20px;
-                font-size: 1.1em;
-            }
-            
-            button {
-                padding: 12px 30px;
-                font-size: 1.1em;
-            }
-            
-            #surpriseMessage {
-                font-size: 1.3em;
-            }
-        }
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .message { padding: 30px 20px; font-size: 1.1em; }
+    button { padding: 12px 30px; font-size: 1.1em; }
+    #surpriseMessage { font-size: 1.3em; }
+    .side-images { display: none; } /* Oculta fotos em mobile */
+}
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .message {
-                padding: 20px 15px;
-                font-size: 1em;
-            }
-            
-            .container {
-                padding: 20px 15px;
-            }
-        }
-    </style>
+@media (max-width: 480px) {
+    h1 { font-size: 2em; }
+    .message { padding: 20px 15px; font-size: 1em; }
+    .container { padding: 20px 15px; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Para Yasmin ❤️</h1>
-        <div class="message">
-            <p>Sei que não sou perfeito e que te devo muito por ser tão paciente comigo.</p>
-            <p>Você é tudo o que eu sempre sonhei e tudo o que eu sempre quis para minha vida.</p>
-            <p>Estar ao seu lado me faz sentir completo, e é exatamente onde eu quero estar para sempre.</p>
-            <p>Você é minha paixão, minha menininha importante, minha beldade, minha razão de sorrir todos os dias.</p>
-            <p>Obrigado por ser você, por me amar do seu jeitinho único e por transformar minha vida em algo muito mais especial.</p>
-            <p>Eu te amo mais do que palavras podem explicar, e cada dia ao teu lado é um presente que jamais vou deixar de valorizar. ❤️</p>
-        </div>
-        <button id="surpriseButton">Clique aqui 💌</button>
-        <p id="surpriseMessage" class="hidden"></p>
+
+<!-- Lado esquerdo -->
+<div class="side-images left">
+    <img src="https://i.imgur.com/EA9wCA8.jpeg" alt="Nossa foto 1">
+    <img src="https://i.imgur.com/ltnD7Y7.jpeg" alt="Nossa foto 2">
+    <img src="https://i.imgur.com/2Wfwfcx.jpeg" alt="Nossa foto 3">
+    <img src="https://i.imgur.com/Aymwb2v.jpeg" alt="Nossa foto 4">
+</div>
+
+<!-- Lado direito -->
+<div class="side-images right">
+    <img src="https://i.imgur.com/no5qfYK.jpeg" alt="Nossa foto 5">
+    <img src="https://i.imgur.com/w6AePXO.jpeg" alt="Nossa foto 6">
+    <img src="https://i.imgur.com/AQYV8JP.jpeg" alt="Nossa foto 7">
+    <img src="https://i.imgur.com/H4ebqrN.jpeg" alt="Nossa foto 8">
+</div>
+
+<div class="container">
+    <h1>Para Yasmin ❤️</h1>
+    <div class="message">
+        <p>Sei que não sou perfeito e que te devo muito por ser tão paciente comigo.</p>
+        <p>Você é tudo o que eu sempre sonhei e tudo o que eu sempre quis para minha vida.</p>
+        <p>Estar ao seu lado me faz sentir completo, e é exatamente onde eu quero estar para sempre.</p>
+        <p>Você é minha paixão, minha menininha importante, minha beldade, minha razão de sorrir todos os dias.</p>
+        <p>Obrigado por ser você, por me amar do seu jeitinho único e por transformar minha vida em algo muito mais especial.</p>
+        <p>Eu te amo mais do que palavras podem explicar, e cada dia ao teu lado é um presente que jamais vou deixar de valorizar. ❤️</p>
     </div>
+    <button id="surpriseButton">Clique aqui 💌</button>
+    <p id="surpriseMessage" class="hidden"></p>
+</div>
 
-    <script>
-        // Função para criar corações flutuantes
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            
-            // Posição aleatória na horizontal
-            heart.style.left = Math.random() * 100 + 'vw';
-            
-            // Tamanho aleatório
-            const size = Math.random() * 20 + 10;
-            heart.style.width = size + 'px';
-            heart.style.height = size + 'px';
-            
-            // Duração aleatória da animação
-            const duration = Math.random() * 3 + 2;
-            heart.style.animation = `float ${duration}s linear forwards`;
-            
-            // Opacidade aleatória
-            heart.style.opacity = Math.random() * 0.6 + 0.4;
-            
-            document.body.appendChild(heart);
-            
-            // Remover o coração após a animação
-            setTimeout(() => {
-                heart.remove();
-            }, duration * 1000);
-        }
+<script>
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    const size = Math.random() * 20 + 10;
+    heart.style.width = size + 'px';
+    heart.style.height = size + 'px';
+    const duration = Math.random() * 3 + 2;
+    heart.style.animation = `float ${duration}s linear forwards`;
+    heart.style.opacity = Math.random() * 0.6 + 0.4;
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, duration * 1000);
+}
+setInterval(createHeart, 300);
+for (let i = 0; i < 15; i++) setTimeout(createHeart, i * 100);
 
-        // Criar corações a cada 300ms
-        setInterval(createHeart, 300);
-        
-        // Criar alguns corações iniciais
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createHeart, i * 100);
-        }
+document.getElementById('surpriseButton').addEventListener('click', function() {
+    const surpriseMessage = document.getElementById('surpriseMessage');
+    const messages = [
+        "Você é meu mundo, minha vida, meu amor para sempre ❤️",
+        "Cada momento contigo é especial e único 💖",
+        "Seu sorriso ilumina meus dias mais cinzentos ✨",
+        "Você é a razão do meu coração bater mais forte 💓",
+        "Amo cada detalhe seu, cada riso, cada olhar 🌹",
+        "Você transformou minha vida em um conto de fadas 🏰",
+        "Meu amor por você cresce a cada dia que passa 🌟"
+    ];
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    surpriseMessage.textContent = randomMessage;
+    surpriseMessage.classList.remove('hidden');
+    for (let i = 0; i < 10; i++) setTimeout(createHeart, i * 100);
+    createConfetti();
+});
 
-        // Botão de surpresa
-        document.getElementById('surpriseButton').addEventListener('click', function() {
-            const surpriseMessage = document.getElementById('surpriseMessage');
-            const messages = [
-                "Você é meu mundo, minha vida, meu amor para sempre ❤️",
-                "Cada momento contigo é especial e único 💖",
-                "Seu sorriso ilumina meus dias mais cinzentos ✨",
-                "Você é a razão do meu coração bater mais forte 💓",
-                "Amo cada detalhe seu, cada riso, cada olhar 🌹",
-                "Você transformou minha vida em um conto de fadas 🏰",
-                "Meu amor por você cresce a cada dia que passa 🌟"
-            ];
-            
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            surpriseMessage.textContent = randomMessage;
-            surpriseMessage.classList.remove('hidden');
-            
-            // Criar corações extras ao clicar
-            for (let i = 0; i < 10; i++) {
-                setTimeout(createHeart, i * 100);
-            }
-            
-            // Efeito de confete
-            createConfetti();
-        });
+function createConfetti() {
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'absolute';
+            confetti.style.width = '8px';
+            confetti.style.height = '8px';
+            confetti.style.background = ['#ff69b4','#ff1493','#d81b60','#ff6b6b'][Math.floor(Math.random()*4)];
+            confetti.style.borderRadius = '50%';
+            confetti.style.left = Math.random()*100+'vw';
+            confetti.style.top = '0';
+            confetti.style.animation = `confettiFall ${Math.random()*2+1}s linear forwards`;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
+        }, i*30);
+    }
+}
 
-        // Efeito de confete extra
-        function createConfetti() {
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.style.position = 'absolute';
-                    confetti.style.width = '8px';
-                    confetti.style.height = '8px';
-                    confetti.style.background = ['#ff69b4', '#ff1493', '#d81b60', '#ff6b6b'][Math.floor(Math.random() * 4)];
-                    confetti.style.borderRadius = '50%';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.top = '0';
-                    confetti.style.animation = `confettiFall ${Math.random() * 2 + 1}s linear forwards`;
-                    document.body.appendChild(confetti);
-                    
-                    setTimeout(() => confetti.remove(), 3000);
-                }, i * 30);
-            }
-        }
-
-        // Adicionar animação de confete ao CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes confettiFall {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                    opacity: 1;
-                }
-                100% {
-                    transform: translateY(100vh) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+const style = document.createElement('style');
+style.textContent = `
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
+}
+`;
+document.head.appendChild(style);
+</script>
 </body>
 </html>
-
